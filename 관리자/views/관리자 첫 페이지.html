@@ -1,0 +1,411 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<!-- ================== BEGIN core-css ================== -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+<link href="../assets/css/vendor.min.css" rel="stylesheet" />
+<link href="../assets/css/default/app.min.css" rel="stylesheet" />
+<!-- ================== END core-css ================== -->
+
+<!-- ================== BEGIN page-css ================== -->
+<link href="../assets/plugins/@fullcalendar/common/main.min.css" rel="stylesheet" />
+<link href="../assets/plugins/@fullcalendar/daygrid/main.min.css" rel="stylesheet" />
+<link href="../assets/plugins/@fullcalendar/timegrid/main.min.css" rel="stylesheet" />
+<link href="../assets/plugins/@fullcalendar/list/main.min.css" rel="stylesheet" />
+<link href="../assets/plugins/@fullcalendar/bootstrap/main.min.css" rel="stylesheet" />
+<!-- ================== END page-css ================== -->
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <!-- <div id="content" class="app-content"> -->
+    <div class="row">
+        <!-- 오늘의 게시물 현황 -->
+        <div class="col-6">
+            <div class="panel panel-inverse" data-sortable-id="table-basic-1">
+                <!-- BEGIN panel-heading -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">게시물 관리</h4>
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
+                                class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
+                                class="fa fa-redo"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
+                                class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
+                                class="fa fa-times"></i></a>
+                    </div>
+                </div>
+                <!-- END panel-heading -->
+                <div class="panel-body">
+                    <!-- BEGIN table-responsive -->
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0 text-inverse">
+                            <!-- <thead>
+                                <tr>
+                                    <th>게시물 관리</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>설정</th>
+                                </tr>
+                            </thead> -->
+                            <tbody>
+                                <tr>
+                                    <td><a href="/array">전체 게시물</a></td>
+                                    <td>{{noticeboards.length}}</td>
+                                    <td><a href="/array">미확인 게시물</a></td>
+                                    <td>{{ff.length}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END table-responsive -->
+            </div>
+        </div>
+
+        <!-- 문의/ 답변 관리 -->
+        <div class="col-6">
+            <div class="panel panel-inverse" data-sortable-id="table-basic-4">
+                <!-- BEGIN panel-heading -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">회원정보 관리</h4>
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
+                                class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
+                                class="fa fa-redo"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
+                                class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
+                                class="fa fa-times"></i></a>
+                    </div>
+                </div>
+                <!-- END panel-heading -->
+
+                <div class="panel-body">
+                    <!-- BEGIN table-responsive -->
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0 text-inverse">
+                            <!-- <thead>
+                                <tr>
+                                    <th>문의/답변 관리</th>
+                                    <th>설정</th>
+                                </tr>
+                            </thead> -->
+                            <tbody>
+                                <tr>
+                                    <td><a href="/usersinfomation">회원 정보보기</a></td>
+                                    <!-- <td>1</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END table-responsive -->
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 공지사항 관리 -->
+        <div class="col-6">
+            <div class="panel panel-inverse" data-sortable-id="table-basic-2">
+                <!-- BEGIN panel-heading -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">공지사항 관리</h4>
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
+                                class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
+                                class="fa fa-redo"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
+                                class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
+                                class="fa fa-times"></i></a>
+                    </div>
+                </div>
+                <!-- END panel-heading -->
+
+                <div class="panel-body">
+                    <!-- BEGIN table-responsive -->
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0 text-inverse">
+                            <!-- <thead>
+                                <tr>
+                                    <th>공지사항</th>
+                                    <th>더보기</th>
+                                </tr>
+                            </thead> -->
+                            <tbody>
+                                <!-- for문으로 쏘자 -->
+                                {% for notice in notices %}
+                                <tr>
+                                    <td><a id="notice" href="/notice/{{notice.id}}">{{notice.noticeName}}</a></td>
+                                    <td>{{notice.noticeName}}</td>
+                                    <td>{{notice.createdAt}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END table-responsive -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 포럼 관리 -->
+        <div class="col-6">
+            <div class="panel panel-inverse" data-sortable-id="table-basic-3">
+                <!-- BEGIN panel-heading -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">포럼 관리</h4>
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
+                                class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
+                                class="fa fa-redo"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
+                                class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
+                                class="fa fa-times"></i></a>
+                    </div>
+                </div>
+                <!-- END panel-heading -->
+                <div class="panel-body">
+                    <!-- BEGIN table-responsive -->
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0 text-inverse">
+                            <!-- <thead>
+                                <tr>
+                                    <th>공지사항</th>
+                                    <th>더보기</th>
+                                </tr>
+                            </thead> -->
+                            <tbody>
+                                <!-- for문으로 쏘자 -->
+                                {% for forum in forums %}
+                                <tr>
+                                    <td><a id="forum" href="/forum/{{forum.id}}">{{forum.id}}</a></td>
+                                    <td>{{forum.forumName}}</td>
+                                    <td>{{forum.createdAt}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END table-responsive -->
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 포럼 관리 -->
+        <div class="col-12">
+            <div class="panel panel-inverse" data-sortable-id="table-basic-1002">
+                <!-- BEGIN panel-heading -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">포럼 행사 일정</h4>
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
+                                class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
+                                class="fa fa-redo"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
+                                class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
+                                class="fa fa-times"></i></a>
+                    </div>
+                </div>
+                <!-- END panel-heading -->
+                <!-- BEGIN page-header -->
+                <h1 class="page-header">Calendar <small>포럼 행사 일정</small></h1>
+                <!-- END page-header -->
+                <hr />
+                <!-- BEGIN row -->
+                <div class="row">
+                    <!-- BEGIN event-list -->
+                    <div class="d-none d-lg-block" style="width: 0px">
+                        <div id="external-events" class="fc-event-list">
+
+                        </div>
+                    </div>
+                    <!-- END event-list -->
+
+                    <div class="col-lg">
+                        <!-- BEGIN calendar -->
+                        <div id="calendar" class="calendar"></div>
+                        <!-- END calendar -->
+                    </div>
+                </div>
+                <!-- END row -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<!-- ================== BEGIN core-js ================== -->
+<script src="../assets/js/vendor.min.js"></script>
+<script src="../assets/js/app.min.js"></script>
+<script src="../assets/js/theme/default.min.js"></script>
+<!-- ================== END core-js ================== -->
+
+<!-- ================== BEGIN page-js ================== -->
+<script src="../assets/plugins/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="../assets/js/demo/render.highlight.js"></script>
+<!-- ================== END page-js ================== -->
+
+<!-- ================== BEGIN page-js ================== -->
+<script src="../assets/plugins/moment/min/moment.min.js"></script>
+<script src="../assets/plugins/@fullcalendar/core/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/daygrid/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/timegrid/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/interaction/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/list/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/bootstrap/main.global.js"></script>
+<script src="../assets/js/demo/calendar.demo.js"></script>
+
+
+
+<script>
+    /*
+Template Name: Color Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 5
+Version: 5.0.0
+Author: Sean Ngu
+Website: http://www.seantheme.com/color-admin/
+*/
+
+    var handleCalendarDemo = function () {
+        // external events
+        var containerEl = document.getElementById('external-events');
+        var Draggable = FullCalendarInteraction.Draggable;
+        new Draggable(containerEl, {
+            itemSelector: '.fc-event',
+            eventData: function (eventEl) {
+                return {
+                    title: eventEl.innerText,
+                    color: eventEl.getAttribute('data-color')
+                };
+            }
+        });
+
+        // fullcalendar
+
+        var d = new Date();
+        var month = d.getMonth() + 1;
+        month = (month < 10) ? '0' + month : month;
+        var year = d.getFullYear();
+        var day = d.getDate();
+        var today = moment().startOf('day');
+        var calendarElm = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarElm, {
+            headerToolbar: {
+                left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                center: 'title',
+                right: 'prev,next today'
+            },
+            buttonText: {
+                today: 'Today',
+                month: 'Month',
+                week: 'Week',
+                day: 'Day'
+            },
+            initialView: 'dayGridMonth',
+            editable: true,
+            droppable: true,
+            themeSystem: 'bootstrap',
+            views: {
+                timeGrid: {
+                    eventLimit: 6 // adjust to 6 only for timeGridWeek/timeGridDay
+                }
+            },
+            events: [{
+                title: '파이콘 한국 2021',
+                start: year + '-' + month + '-02',
+                end: year + '-' + month + '-04',
+                color: COLOR_TEAL
+            }, {
+                title: ' AWS Industry Week',
+                start: year + '-' + month + '-05',
+                end: year + '-' + month + '-14',
+                color: COLOR_BLUE
+            }, {
+                title: '데이터야놀자 2021',
+                start: year + '-' + month + '-16',
+                color: COLOR_PINK
+            }, {
+                title: ' 2021 AIoT 국제전시회 ',
+                start: year + '-' + month + '-20',
+                end: year + '-' + month + '-23',
+                color: COLOR_INDIGO
+            }, {
+                title: 'AWS Community Day 2021',
+                start: year + '-' + month + '-23',
+                color: COLOR_BLUE
+            }, {
+                title: '삼성 SDC',
+                start: year + '-' + month + '-26',
+                color: COLOR_GREEN
+            }, {
+                title: '반도체대전 SEDEX',
+                start: year + '-' + month + '-27',
+                end: year + '-' + month + '-30',
+                color: COLOR_ORANGE
+            }, {
+                title: 'LINE DEVELOPER DAY 2021',
+                start: year + '-' + month + '-41',
+                end: year + '-' + month + '-42',
+                color: COLOR_PINK
+            }, {
+                title: 'PASCON 2021',
+                start: year + '-' + month + '-42',
+                color: COLOR_ORANGE
+            }, {
+                title: '우아콘2021 (우아한테크콘서트)',
+                start: year + '-' + month + '-48',
+                end: year + '-' + month + '-50',
+                color: COLOR_BLUE
+            }, {
+                title: '한국 R 컨퍼런스 2021',
+                start: year + '-' + month + '-50',
+                color: COLOR_RED
+            }, {
+                title: 'SoftWave 2021',
+                start: year + '-' + month + '-62',
+                end: year + '-' + month + '-64',
+                color: COLOR_INDIGO
+            }, {
+                title: 'AI SUMMIT 2021 SEOUL',
+                start: year + '-' + month + '-68',
+                end: year + '-' + month + '-70',
+                color: COLOR_GREEN
+            }]
+        });
+
+        calendar.render();
+    };
+
+    var Calendar = function () {
+        "use strict";
+        return {
+            //main function
+            init: function () {
+                handleCalendarDemo();
+            }
+        };
+    }();
+
+    $(document).ready(function () {
+        Calendar.init();
+    });
+</script>
+
+{% endblock %}

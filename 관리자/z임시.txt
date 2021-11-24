@@ -1,0 +1,32 @@
+
+형 폼에다가 히든 인풋을 하나 주시고요. input id='c' style="display:none"
+폼에다가 onsubmit을 주고 함수를 하나 걸어요. onsubmit="A()"
+그리고 스크립트에다가 함수 선언을 해줘서 function A(){
+    체크박스들이 여러개 있을 거니까 체크박스들을 같은 class로 주고
+    체크박스가 value가 어케 들어오는지 몰라서 이건 형이 보고 처리를 해서
+    const a = document.getElementsByClassName('').?? 이런걸로 
+    변수 a에다가 체크한 값들을 담아요.
+    대신 책 예제를 참고하기 위해 값 앞에 #를 붙여줘요.
+    #파이썬, #C 처럼
+
+    그다음에    
+    document.getElementById('c').innerHTML = a
+    이런 식으로 히든 인풋에다가 값 넣어서 포스트로 쏴준다음에
+}
+
+그리고 db를 책에서 해시태그처럼 구성을 해서
+db에 이제 입력할 때 .match로 #로 데이터 들을 구분하고,
+입력을 해줘요. (근데 책에서 #으로 해시태그 처리한거 약간 오류도 있어서 일단 이 방법 해보시거나
+    아싸리 형 처음처럼 노가다로 일단 해보는 것도 괜츈할듯)
+
+const hashtags = req.body.content.match(/#[^\s#]*/g);
+    if (hashtags) {
+      const result = await Promise.all(
+        hashtags.map(tag => {
+          return Hashtag.findOrCreate({
+            where: { title: tag.slice(1).toLowerCase() },
+          })
+        }),
+      );
+      await post.addHashtags(result.map(r => r[0]));
+

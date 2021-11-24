@@ -1,0 +1,141 @@
+<!-- 일단 수정은 게시물 등록 창 그대로 불러와서 내용 수정하는게 좋을듯 -->
+
+{% extends 'layout.html' %}
+{% block content %}
+
+<!-- 기존 값들은 value로 넣어줘야 할듯? -->
+<!-- updates1 로 받아옴 -->
+<form action="/board/update" method="post" enctype="multipart/form-data" onsubmit="abcd()">
+
+
+  <!-- 카테고리 이걸로 입력 받자 -->
+  <div class="">
+    게시판 선택 카테고리
+    <select name="" id="">
+      <option value="">a</option>
+      <option value="">b</option>
+    </select>
+  </div>
+
+
+  <!-- 제목 -->
+  <div class="">
+    <input type="text" name="boardName" placeholder="제목을 입력하세요" value="{{updates1[0].boardName}}">
+  </div>
+
+  <!-- 그러면 이건 템플릿으로 조건을 박자 -->
+  <div class="">
+    기본 알림 불러오기 카테고리가 선택되면 조건을 줘서 불러오는
+  </div>
+
+
+  <div class="">
+    <br>설정 모음 넣을 것<br>
+
+    사진(업로드)
+    <input id='boardImg' type="file" name='boardImg' accept="" multiple /><br>
+
+
+    <a href="">외부연동 사진
+      <input type="file" accept="" />
+    </a>
+    <a href="">동영상 업로드 (사진+ 새페이지1)</a>
+    <a href="">스티커(새페이지 1)</a>
+    <a href="">인용구</a>
+
+    <input type="text" "name"> 구분선 (DOM 적용) 글자 스타일 변경하는 칸(지금
+    페이지에 적용)
+  </div>
+
+
+  <!-- 여기에 이제 게시판 글을 쓸겁니다 -->
+  <div id="PO" class="" contenteditable="true" >{{updates1[0].boardBody | safe}}</div>
+
+  <!-- 태그 -->
+  <div class="">태그<input type="text" name="DD" value=""/></div>
+
+  <!-- 여기에 contenteditable 값 옮겨서 post 합시다 -->
+  <textarea name="boardBody" id="여기여기" cols="50" rows="50" style="display:none"></textarea>
+
+  <input type="number" name="number" id="" style="display: none;" value="{{updates1[0].id}}">
+  <!-- 임시등록을 사용할까 고민중~ -->
+  <div class="">
+    <button id="" type="submit" class="">임시등록</button>
+  </div>
+
+  <!-- 찐 등록 -->
+  <div class="">
+    <button id="" type="submit" class="">등록</button>
+  </div>
+</form>
+
+{% endblock %}
+
+
+{% block script %}
+<script>
+  const ABC = document.getElementById('boardImg');
+  if (ABC) {
+    ABC.addEventListener('change', function (e) {
+
+        // 여기에 contenteditable에 들어갈 느낌을 넣어줘야함
+
+
+
+      const formData = new FormData();
+      console.log(this, this.files, this.files.length);
+
+      console.log(this.files[0].name);
+
+
+      // 이름 넣을 때 멀터 설정 이름으로 불어와야함
+      // for (i = 0; i < this.files.length; i++) {
+      //   document.getElementById('PO').innerHTML += `<img id="" src="/boardImg/${this.files[i].name}" style="" width="250" alt="미리보기">`;
+      // }
+
+
+
+      // 얘가 실제 파일 업로드
+      for (i = 0; i < this.files.length; i++) {
+        formData.append('boardImg', this.files[i]);
+      }
+
+      // console.log(formData);
+
+      // 이걸로 바꿀 수 있는지 봐야함
+      // let productimages = [];
+      // for (let i = 0; i < images.length; i++) {
+      //   productimages.push(images[i]);
+      // }
+      // formData.append('productPhotos', images);
+
+
+
+      axios.post('/board/post/boardImg', formData)
+        .then((res) => {
+          console.log(res.data);
+
+          // document.getElementById('img-url').value = res.data;
+          // document.getElementById('img-preview').src = res.data;
+          // document.getElementById('img-preview').style.display = 'inline';
+
+          // contenteditable에 쏴주는 처리를 여기다 하자(멀터에서 이름 설정(이름+현재시간으로 이름설정) 하는 처리를 가져가고 싶어서)
+          for (i = 0; i < res.data.length; i++) {
+            document.getElementById('PO').innerHTML +=
+              `<img id="" src="/boardImg/${res.data[i]}" style="" width="250" alt="미리보기">`;
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    })
+  }
+
+  function abcd() {
+    document.getElementById('여기여기').innerHTML = document.getElementById('PO').innerHTML;
+  }
+</script>
+
+
+{% endblock %}
+

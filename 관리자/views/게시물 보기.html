@@ -1,0 +1,35 @@
+<!-- 게시물 보기는 1. db에서 게시물들 목록 불러오는 거 -->
+<!-- 2 눌르면 링크 타는거 -->
+<!-- 링크 들어가면 게시물 보이게 이건 화면을 따로 구성해야할듯   -->
+
+<!-- 여기에 수정 히든 인풋을 줘야함 -->
+<!-- 그럼 여기에 템플릿으로 쏴주는거 먼저 해야겠네 -->
+
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<br><br><br>
+<!-- 여기에 유저인지 아닌지 조건 걸어줘야함 -->
+<a href="/update/{{updates[0].id}}">수정</a>
+{{update.id}}
+
+<div class="" id='a'>
+    <!-- {% for update in updates %} -->
+    <div class="" id='b'>{{updates[0].id}}</div>
+    <div class="" id='b'>{{updates[0].boardName}}</div>
+    <div class="" id='b'>{{updates[0].boardBody | safe}}></div>
+    <!-- {% endfor %} -->
+</div>
+
+{% endblock %}
+
+
+
+
+
+{% block script %}
+<script>
+</script>
+{% endblock %}

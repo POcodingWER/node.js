@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="">
+  <form id="" action="/forum" method="post">
+    <div class="">
+      <input id="" type="text" name="forumName" placeholder="행사" />
+    </div>
+
+    <div class="">
+      <input type="text" name="forumDate" placeholder="일시" />
+    </div>
+    <div class="">
+      <input type='text' name="forumPlace" placeholder="장소" />
+    </div>
+    <div class="">
+      <input type='text' name="forumHost" placeholder="주최/후원" />
+    </div>
+
+
+    <div class="">
+      <button id="" type="submit">등록</button>
+    </div>
+  </form>
+</div>
+
+<table id="user-list">
+  <thead>
+    <tr>
+      <th>번호</th>
+      <th>행사</th>
+      <th>일시</th>
+      <th>장소</th>
+      <th>주최/후원</th>
+      <th>수정할 건지</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for forum in forums %}
+    <tr>
+      <td>{{forum.id}}</td>
+      <td>{{forum.forumName}}</td>
+      <td>{{forum.forumDate}}</td>
+      <td>{{forum.forumPlace}}</td>
+      <td>{{forum.forumHost}}</td>
+      <td><a name={{forum.id}} href='/water2/{{forum.id}}'>수정</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<br>
+
+{% endblock %}

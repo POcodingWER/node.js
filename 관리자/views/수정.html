@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="">
+
+
+
+  <form id="" action="/water/water2" method="post">
+    <div class="">
+      <input type="text" name="waterName" placeholder="수정 제목" />
+    </div>
+
+    <div class="">
+      <textarea id="" name="waterBody" maxlength="" placeholder="수정 내용"></textarea>
+    </div>
+
+    <!-- 난 여기서 넘어온 value를 히든 인풋으로 포스트 쏴줬음 -->
+    {% for abc in pra %}
+    <input type="hidden" name="prac" value="{{abc}}">
+    {% endfor %}
+
+    <div class="">
+      <button id="" type="submit" class="">등록</button>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}

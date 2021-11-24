@@ -1,0 +1,34 @@
+<!-- 여기에 나의 게시물
+나의 댓글
+뭐 등등 나에 대한 정보를 쭉 나열해야지
+
+게시물 수정 링크는 -->
+<!-- 
+이거는 템플릿으로 if user로 써서 버튼 보이고 안보이고를 하면 될듯
+내 게시물을 들어갔을 때나
+
+아니면 내 정보창에서 하면 -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="" id='a'>
+    {% for update in updates %}
+    <!-- 게시물 보기로 가는 링크 -->
+    <div class="" id='b'>{{update.id}}</div>
+    <div class="" id='b'><a name="{{update.id}}" href="/look/{{update.id}}">{{update.boardName}}</a></div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+
+
+{% block script %}
+<script>
+
+</script>
+{% endblock %}

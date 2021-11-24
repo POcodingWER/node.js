@@ -1,0 +1,244 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<!-- ================== BEGIN core-css ================== -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+<link href="../assets/css/vendor.min.css" rel="stylesheet" />
+<link href="../assets/css/default/app.min.css" rel="stylesheet" />
+<!-- ================== END core-css ================== -->
+
+<!-- ================== BEGIN page-css ================== -->
+<link href="../assets/plugins/@fullcalendar/common/main.min.css" rel="stylesheet" />
+<link href="../assets/plugins/@fullcalendar/daygrid/main.min.css" rel="stylesheet" />
+<link href="../assets/plugins/@fullcalendar/timegrid/main.min.css" rel="stylesheet" />
+<link href="../assets/plugins/@fullcalendar/list/main.min.css" rel="stylesheet" />
+<link href="../assets/plugins/@fullcalendar/bootstrap/main.min.css" rel="stylesheet" />
+<!-- ================== END page-css ================== -->
+{% endblock %}
+
+
+{% block content%}
+<!-- BEGIN page-header -->
+<h1 class="page-header">Calendar <small>header small text goes here...</small></h1>
+<!-- END page-header -->
+<hr />
+<!-- BEGIN row -->
+<div class="row">
+    <!-- BEGIN event-list -->
+    <div class="d-none d-lg-block" style="width: 215px">
+        <div id="external-events" class="fc-event-list">
+            <h5 class="mb-3">Draggable Events</h5>
+            <div class="fc-event" data-color="#00acac">
+                <div class="fc-event-text">Meeting with Client</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-success"></i></div>
+            </div>
+            <div class="fc-event" data-color="#348fe2">
+                <div class="fc-event-text">IOS App Development</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-blue"></i></div>
+            </div>
+            <div class="fc-event" data-color="#f59c1a">
+                <div class="fc-event-text">Group Discussion</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-warning"></i></div>
+            </div>
+            <div class="fc-event" data-color="#ff5b57">
+                <div class="fc-event-text">New System Briefing</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-danger"></i></div>
+            </div>
+            <div class="fc-event">
+                <div class="fc-event-text">Brainstorming</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-inverse"></i></div>
+            </div>
+            <hr class="bg-grey-lighter my-3" />
+            <h5 class="mb-3">Other Events</h5>
+            <div class="fc-event" data-color="#b6c2c9">
+                <div class="fc-event-text">Other Event 1</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i></div>
+            </div>
+            <div class="fc-event" data-color="#b6c2c9">
+                <div class="fc-event-text">Other Event 2</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i></div>
+            </div>
+            <div class="fc-event" data-color="#b6c2c9">
+                <div class="fc-event-text">Other Event 3</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i></div>
+            </div>
+            <div class="fc-event" data-color="#b6c2c9">
+                <div class="fc-event-text">Other Event 4</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i></div>
+            </div>
+            <div class="fc-event" data-color="#b6c2c9">
+                <div class="fc-event-text">Other Event 5</div>
+                <div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i></div>
+            </div>
+        </div>
+    </div>
+    <!-- END event-list -->
+    <div class="col-lg">
+        <!-- BEGIN calendar -->
+        <div id="calendar" class="calendar"></div>
+        <!-- END calendar -->
+    </div>
+</div>
+<!-- END row -->
+{% endblock %}
+
+
+
+{% block script %}
+
+<!-- ================== BEGIN core-js ================== -->
+<script src="../assets/js/vendor.min.js"></script>
+<script src="../assets/js/app.min.js"></script>
+<script src="../assets/js/theme/default.min.js"></script>
+<!-- ================== END core-js ================== -->
+
+<!-- ================== BEGIN page-js ================== -->
+<script src="../assets/plugins/moment/min/moment.min.js"></script>
+<script src="../assets/plugins/@fullcalendar/core/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/daygrid/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/timegrid/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/interaction/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/list/main.global.js"></script>
+<script src="../assets/plugins/@fullcalendar/bootstrap/main.global.js"></script>
+<script src="../assets/js/demo/calendar.demo.js"></script>
+
+
+
+<script>
+    /*
+Template Name: Color Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 5
+Version: 5.0.0
+Author: Sean Ngu
+Website: http://www.seantheme.com/color-admin/
+*/
+
+    var handleCalendarDemo = function () {
+        // external events
+        var containerEl = document.getElementById('external-events');
+        var Draggable = FullCalendarInteraction.Draggable;
+        new Draggable(containerEl, {
+            itemSelector: '.fc-event',
+            eventData: function (eventEl) {
+                return {
+                    title: eventEl.innerText,
+                    color: eventEl.getAttribute('data-color')
+                };
+            }
+        });
+
+        // fullcalendar
+
+        var d = new Date();
+        var month = d.getMonth() + 1;
+        month = (month < 10) ? '0' + month : month;
+        var year = d.getFullYear();
+        var day = d.getDate();
+        var today = moment().startOf('day');
+        var calendarElm = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarElm, {
+            headerToolbar: {
+                left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                center: 'title',
+                right: 'prev,next today'
+            },
+            buttonText: {
+                today: 'Today',
+                month: 'Month',
+                week: 'Week',
+                day: 'Day'
+            },
+            initialView: 'dayGridMonth',
+            editable: true,
+            droppable: true,
+            themeSystem: 'bootstrap',
+            views: {
+                timeGrid: {
+                    eventLimit: 6 // adjust to 6 only for timeGridWeek/timeGridDay
+                }
+            },
+            events: [{
+                title: '파이콘 한국 2021',
+                start: year + '-' + month + '-02',
+                end: year + '-' + month + '-04',
+                color: COLOR_TEAL
+            }, {
+                title: ' AWS Industry Week',
+                start: year + '-' + month + '-05',
+                end: year + '-' + month + '-14',
+                color: COLOR_BLUE
+            }, {
+                title: '데이터야놀자 2021',
+                start: year + '-' + month + '-16',
+                color: COLOR_PINK
+            }, {
+                title: ' 2021 AIoT 국제전시회 ',
+                start: year + '-' + month + '-20',
+                end: year + '-' + month + '-23',
+                color: COLOR_INDIGO
+            }, {
+                title: 'AWS Community Day 2021',
+                start: year + '-' + month + '-23',
+                color: COLOR_BLUE
+            }, {
+                title: '삼성 SDC',
+                start: year + '-' + month + '-26',
+                color: COLOR_GREEN
+            }, {
+                title: '반도체대전 SEDEX',
+                start: year + '-' + month + '-27',
+                end: year + '-' + month + '-30',
+                color: COLOR_ORANGE
+            }, {
+                title: 'LINE DEVELOPER DAY 2021',
+                start: year + '-' + month + '-41',
+                end: year + '-' + month + '-42',
+                color: COLOR_PINK
+            }, {
+                title: 'PASCON 2021',
+                start: year + '-' + month + '-42',
+                color: COLOR_ORANGE
+            }, {
+                title: '우아콘2021 (우아한테크콘서트)',
+                start: year + '-' + month + '-48',
+                end: year + '-' + month + '-50',
+                color: COLOR_BLUE
+            }, {
+                title: '한국 R 컨퍼런스 2021',
+                start: year + '-' + month + '-50',
+                color: COLOR_RED
+            }, {
+                title: 'SoftWave 2021',
+                start: year + '-' + month + '-62',
+                end: year + '-' + month + '-64',
+                color: COLOR_INDIGO
+            }, {
+                title: 'AI SUMMIT 2021 SEOUL',
+                start: year + '-' + month + '-68',
+                end: year + '-' + month + '-70',
+                color: COLOR_GREEN
+            }]
+        });
+
+        calendar.render();
+    };
+
+    var Calendar = function () {
+        "use strict";
+        return {
+            //main function
+            init: function () {
+                handleCalendarDemo();
+            }
+        };
+    }();
+
+    $(document).ready(function () {
+        Calendar.init();
+    });
+</script>
+
+
+
+
+
+{% endblock %}

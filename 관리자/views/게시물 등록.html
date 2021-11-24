@@ -1,0 +1,211 @@
+  {% extends 'layout.html' %}
+
+  {% block head %}
+
+  {% endblock %}
+
+
+  {% block content %}
+
+  <form action="/board/post" method="post" enctype="multipart/form-data" onsubmit="abcd()">
+    <!-- 카테고리 이걸로 입력 받자 -->
+    <div class="row">
+      <div class="col-2">
+        <select class="form-select" name="boardCategory">
+          <option value="1">일자리 구해요</option>
+          <option value="2">사람을 구해요</option>
+          <option value="3">아무거나 써놔요</option>
+        </select>
+      </div>
+
+      <!-- 제목 -->
+      <div class="col-10">
+        <input type="text" class="form-control" name="boardName" placeholder="제목을 입력하세요">
+      </div>
+    </div>
+    <!-- 그러면 이건 템플릿으로 조건을 박자 -->
+    <!-- <div class="">
+      기본 알림 불러오기 카테고리가 선택되면 조건을 줘서 불러오는
+    </div> -->
+
+
+    <div class="">
+      <!-- <br>설정 모음 넣을 것<br> -->
+<br><br>
+      사진(업로드)
+      <input id='boardImg' class="form-control" type="file" name='boardImg' accept="" multiple /><br>
+
+
+      <!-- sns api 가져와야 하니까 잠시 보류 -->
+      <!-- <a href="">외부연동 사진
+        <input type="file" accept="" />
+      </a> -->
+
+      <!-- 동영상도 잠시 보류 -->
+      <!-- <a href="">동영상 업로드 (사진+ 새페이지1)</a> -->
+      <!-- <a href="">스티커(새페이지 1)</a> -->
+      <!-- <a href="">인용구</a> -->
+
+      <!-- 여기에 글자색 변경하는 거 한번 넣어 보자 -->
+      <div class="" id="red">글자색 변경</div>
+
+    </div>
+
+
+    <!-- 여기에 이제 게시판 글을 쓸겁니다 -->
+    <div id="PO" class="form-control" class="" contenteditable="true"></div>
+
+    <!-- 태그 해시태그 찾아보자 지금-->
+    <!-- 잠시 보류할 것임 게시물 검색을 어떻게 구현할지부터 정하자 -->
+    <!-- <div class="">태그<input type="text" name="DD" /></div> -->
+
+    <!-- 여기에 contenteditable 값 옮겨서 post 합시다 -->
+    <textarea name="boardBody" id="여기여기" cols="50" rows="50" style="display:none"></textarea>
+
+    <!-- 임시등록을 사용할까 고민중~ -->
+    <!-- <div class="">
+      <button id="" type="submit" class="">임시등록</button>
+    </div> -->
+
+    <br>
+    <!-- 찐 등록 -->
+    <div class="">
+      <button id="" type="submit" class="btn btn-orange">등록</button>
+    </div>
+  </form>
+
+  {% endblock %}
+
+
+  {% block script %}
+  <script>
+    const ABC = document.getElementById('boardImg');
+    if (ABC) {
+      ABC.addEventListener('change', function (e) {
+
+
+        // 여기에 contenteditable에 들어갈 느낌을 넣어줘야함
+
+
+
+        const formData = new FormData();
+        console.log(this, this.files, this.files.length);
+
+        console.log(this.files[0].name);
+
+
+        // 이름 넣을 때 멀터 설정 이름으로 불어와야함
+        // for (i = 0; i < this.files.length; i++) {
+        //   document.getElementById('PO').innerHTML += `<img id="" src="/boardImg/${this.files[i].name}" style="" width="250" alt="미리보기">`;
+        // }
+
+
+
+        // 얘가 실제 파일 업로드
+        for (i = 0; i < this.files.length; i++) {
+          formData.append('boardImg', this.files[i]);
+        }
+
+        // console.log(formData);
+
+        // 이걸로 바꿀 수 있는지 봐야함
+        // let productimages = [];
+        // for (let i = 0; i < images.length; i++) {
+        //   productimages.push(images[i]);
+        // }
+        // formData.append('productPhotos', images);
+
+
+
+        axios.post('/board/post/boardImg', formData)
+          .then((res) => {
+            console.log(res.data);
+
+            // document.getElementById('img-url').value = res.data;
+            // document.getElementById('img-preview').src = res.data;
+            // document.getElementById('img-preview').style.display = 'inline';
+
+            // contenteditable에 쏴주는 처리를 여기다 하자(멀터에서 이름 설정(이름+현재시간으로 이름설정) 하는 처리를 가져가고 싶어서)
+            for (i = 0; i < res.data.length; i++) {
+              document.getElementById('PO').innerHTML +=
+                `<img id="" src="/boardImg/${res.data[i]}" style="" width="250" alt="미리보기">`;
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      })
+    }
+
+    function abcd() {
+      document.getElementById('여기여기').innerHTML = document.getElementById('PO').innerHTML;
+    }
+
+
+    // 글자 스타일 처리
+    async function foo(req, res) {
+      try {
+
+        // const real = "<span style='color:red'>" + selectedText + '<span>';
+        const red = document.getElementById('red');
+
+        let selection = window.getSelection();
+        let clonedRange = selection.getRangeAt(0).cloneRange();
+
+        // 여기서 좀 파악해야할듯, 태그 들때문에 배열 인덱스가 달라짐.
+        console.log(clonedRange);
+        let i = 0;
+        let array = [];
+
+        if (clonedRange.endOffset - clonedRange.startOffset > 0) {
+          while (i < 100) {
+            if (textarea1.innerHTML[i] != undefined) {
+              array += textarea1.innerHTML[i];
+
+              if (i == clonedRange.startOffset - 1) {
+                array += "<span style='color:red'>";
+              }
+
+              if (i == clonedRange.endOffset - 1) {
+                array += '</span>';
+              }
+              i++;
+            } else {
+              i++;
+            }
+          }
+
+          // red.addEventListener('click', function () {
+          //   console.log(real);
+          // });
+
+          console.log(array);
+
+          textarea1.innerHTML = array;
+
+          console.log(textarea1.innerHTML);
+        }
+      } catch (err) {
+        next(err);
+      }
+    }
+
+    // function onMouseUp(e) {
+    //   const activeTextarea = document.activeElement;
+    //   const selection = activeTextarea.value.substring(activeTextarea.selectionStart, activeTextarea.selectionEnd);
+
+    //   // console.log(selection);
+
+    //   // const outputElement = document.getElementById('output-element');
+    //   const outputText = document.getElementById('output-text');
+    //   // outputElement.innerHTML = activeTextarea.id;
+    //   outputText.innerHTML = selection;
+    // }
+
+    const textarea1 = document.getElementById('PO');
+
+
+    // textarea1.addEventListener('mouseup', onMouseUp, false);
+    textarea1.addEventListener('mouseup', foo, false);
+  </script>
+  {% endblock %}

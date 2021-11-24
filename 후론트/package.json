@@ -1,0 +1,40 @@
+{
+  "name": "theateamfront",
+  "version": "0.0.1",
+  "description": "프론트 단",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "author": "theateam",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.7",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "mysql2": "^2.3.0",
+    "nodemailer": "^6.7.0",
+    "nodemailer-sendgrid": "^1.0.3",
+    "nunjucks": "^3.2.3",
+    "passport": "^0.5.0",
+    "passport-facebook": "^3.0.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-kakao": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.7.0",
+    "sequelize-cli": "^6.2.0",
+    "socket.io": "^2.4.1",
+    "ws": "^8.2.3"
+  }
+}
