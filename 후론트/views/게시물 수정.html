@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>The A Team | 인류 마지막 희망</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+  <meta content="" name="description" />
+  <meta content="" name="author" />
+
+
+  <!-- ================== BEGIN core-css ================== -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link href="../assets/css/vendor.min.css" rel="stylesheet" />
+  <link href="../assets/css/default/app.min.css" rel="stylesheet" />
+  <!-- ================== END core-css ================== -->
+
+  <!-- ================== BEGIN core-css ================== -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link href="../assets/css/one-page-parallax/vendor.min.css" rel="stylesheet" />
+  <link href="../assets/css/one-page-parallax/app.min.css" rel="stylesheet" />
+  <!-- ================== END core-css ================== -->
+
+
+  {% block head %}
+  {% endblock %}
+</head>
+
+<body class='page-navbar-fixed-top-sm'>
+  <!-- begin #page-container -->
+  <div id="page-container" class="fade">
+    <!-- begin #header -->
+    <div id="header" class="header navbar navbar-default navbar-fixed-top navbar-expand-lg">
+      <!-- begin container -->
+      <div class="container">
+        <!-- begin navbar-brand -->
+        <a href="/" class="navbar-brand">
+          <span class="brand-logo"></span>
+          <span class="brand-text">
+            <span class="text-primary">TheATeam</span> Development
+          </span>
+        </a>
+        <!-- end navbar-brand -->
+        <!-- begin navbar-toggle -->
+        <button type="button" class="navbar-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#header-navbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- end navbar-header -->
+        <!-- begin navbar-collapse -->
+        <div class="collapse navbar-collapse" id="header-navbar">
+          <ul class="nav navbar-nav navbar-end">
+            <li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">TEAM</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#service" data-click="scroll-to-target">SERVICES</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#home" data-click="scroll-to-target" data-scroll-target="#home">Profile <b
+                  class="caret"></b></a>
+              <div class="dropdown-menu dropdown-menu-left animated animate__fadeInDown">
+                <a class="dropdown-item" href="/profile">프로필 작성</a>
+                <!-- <a class="dropdown-item" href="index_inverse_header.html">프로필 작성</a> -->
+                <!-- <a class="dropdown-item" href="index_default_header.html">프로필 수정</a> -->
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#home" data-click="scroll-to-target" data-scroll-target="#home">게시물 <b
+                  class="caret"></b></a>
+              <div class="dropdown-menu dropdown-menu-left animated animate__fadeInDown">
+                <a class="dropdown-item" href="/notice">공지사항</a>
+                <a class="dropdown-item" href="/board">게시물 보기</a>
+                <a class="dropdown-item" href="/board/go">게시물 작성</a>
+              </div>
+            </li>{% if user and user.id %}
+            <li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">2021 개발자
+                포럼</a></li>
+            <li class="nav-item"><a class="nav-link" href="/chat" data-click="">문의하기</a></li>
+            <li class="nav-item"><a class="nav-link" href="/userinfo" data-click="">내 정보</a></li>
+            <li class="nav-item"><a class="nav-link" href="/auth/logout" data-click="">로그아웃</a></li>
+          </ul>
+        </div>
+        {% else %}
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">2021 개발자 포럼</a></li>
+        <li class="nav-item"><a class="nav-link" href="/chat" data-click="">문의하기</a></li>
+        <li class="nav-item"><a class="nav-link" href="/join" data-click="">회원가입</a></li>
+        <li class="nav-item"><a class="nav-link" href="/login" data-click="">로그인</a></li>
+        </ul>
+      </div>
+      {% endif %}
+      <!-- end navbar-collapse -->
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- end #header -->
+
+  {% block content %}
+  {% endblock %}
+  <br><br><br>
+
+  <div class="container">
+    <!-- 기존 값들은 value로 넣어줘야 할듯? -->
+    <!-- updates1 로 받아옴 -->
+    <form action="/update" method="post" enctype="multipart/form-data" onsubmit="abcd()">
+
+
+      <!-- 카테고리 이걸로 입력 받자 -->
+      <!-- <div class="">
+        게시판 선택 카테고리
+        <select name="" id="">
+          <option value="">a</option>
+          <option value="">b</option>
+        </select>
+      </div> -->
+
+
+      <!-- 제목 -->
+      <div class="">
+        제목<br>
+        <input type="text" name="boardName" placeholder="제목을 입력하세요" value="{{updates1[0].boardName}}">
+      </div>
+
+      <!-- 그러면 이건 템플릿으로 조건을 박자 -->
+      <!-- <div class="">
+        기본 알림 불러오기 카테고리가 선택되면 조건을 줘서 불러오는
+      </div> -->
+
+
+      <div class="">
+        <!-- <br>설정 모음 넣을 것<br> -->
+
+        <br><br> 사진(업로드)
+        <input id='boardImg' type="file" name='boardImg' accept="" multiple /><br>
+
+
+        <!-- <a href="">외부연동 사진
+          <input type="file" accept="" />
+        </a>
+        <a href="">동영상 업로드 (사진+ 새페이지1)</a>
+        <a href="">스티커(새페이지 1)</a>
+        <a href="">인용구</a> -->
+
+        <!-- <input type="text" "name"> 구분선 (DOM 적용) 글자 스타일 변경하는 칸(지금
+        페이지에 적용) -->
+      </div>
+
+
+      <!-- 여기에 이제 게시판 글을 쓸겁니다 -->
+      <div id="PO" class="" contenteditable="true">{{updates1[0].boardBody | safe}}</div>
+
+      <!-- 태그 -->
+      <!-- <div class="">태그<input type="text" name="DD" value="" /></div> -->
+
+      <!-- 여기에 contenteditable 값 옮겨서 post 합시다 -->
+      <textarea name="boardBody" id="여기여기" cols="50" rows="50" style="display:none"></textarea>
+
+      <input type="number" name="number" id="" style="display: none;" value="{{updates1[0].id}}">
+      <!-- 임시등록을 사용할까 고민중~ -->
+      <!-- <div class="">
+        <button id="" type="submit" class="">임시등록</button>
+      </div> -->
+
+      <!-- 찐 등록 -->
+      <div class="">
+        <button id="" type="submit" class="">등록</button>
+      </div>
+    </form>
+
+  </div>
+
+  <!-- begin theme-panel -->
+  <div class="theme-panel">
+    <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+    <div class="theme-panel-content">
+      <ul class="theme-list clearfix">
+        <li><a href="javascript:;" class="bg-red" data-theme="red"
+            data-theme-file="../assets/css/one-page-parallax/theme/red.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Red"
+            data-original-title="" title="">&nbsp;</a></li>
+        <li><a href="javascript:;" class="bg-pink" data-theme="pink"
+            data-theme-file="../assets/css/one-page-parallax/theme/pink.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Pink"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li><a href="javascript:;" class="bg-orange" data-theme="orange"
+            data-theme-file="../assets/css/one-page-parallax/theme/orange.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Orange"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li><a href="javascript:;" class="bg-yellow" data-theme="yellow"
+            data-theme-file="../assets/css/one-page-parallax/theme/yellow.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Yellow"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li><a href="javascript:;" class="bg-lime" data-theme="lime"
+            data-theme-file="../assets/css/one-page-parallax/theme/lime.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li><a href="javascript:;" class="bg-green" data-theme="green"
+            data-theme-file="../assets/css/one-page-parallax/theme/green.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Green"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li class="active"><a href="javascript:;" class="bg-teal"
+            data-theme-file="../assets/css/one-page-parallax/theme/teal.min.css" data-theme="default"
+            data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body"
+            data-bs-title="Default" data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li><a href="javascript:;" class="bg-cyan" data-theme="aqua"
+            data-theme-file="../assets/css/one-page-parallax/theme/cyan.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cyan"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li><a href="javascript:;" class="bg-blue" data-theme="blue"
+            data-theme-file="../assets/css/one-page-parallax/theme/blue.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li><a href="javascript:;" class="bg-purple" data-theme="purple"
+            data-theme-file="../assets/css/one-page-parallax/theme/purple.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Purple"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li><a href="javascript:;" class="bg-indigo" data-theme="indigo"
+            data-theme-file="../assets/css/one-page-parallax/theme/indigo.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Indigo"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+        <li><a href="javascript:;" class="bg-black" data-theme="black"
+            data-theme-file="../assets/css/one-page-parallax/theme/black.min.css" data-click="theme-selector"
+            data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Black"
+            data-original-title="" title="">&nbsp;</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- end theme-panel -->
+  </div>
+  <!-- end #page-container -->
+
+
+
+  <!-- ================== BEGIN core-js ================== -->
+  <script src="../assets/js/vendor.min.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/js/theme/default.min.js"></script>
+  <!-- ================== END core-js ================== -->
+
+  <!-- ================== BEGIN page-js ================== -->
+  <script src="../assets/plugins/@highlightjs/cdn-assets/highlight.min.js"></script>
+  <script src="../assets/js/demo/render.highlight.js"></script>
+  <!-- ================== END page-js ================== -->
+
+  <!-- ================== BEGIN BASE JS ================== -->
+  <script src="../assets/js/one-page-parallax/vendor.min.js"></script>
+  <script src="../assets/js/one-page-parallax/app.min.js"></script>
+
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  {% block script %}
+  {% endblock %}
+
+  <script>
+    const ABC = document.getElementById('boardImg');
+    if (ABC) {
+      ABC.addEventListener('change', function (e) {
+
+        // 여기에 contenteditable에 들어갈 느낌을 넣어줘야함
+
+
+
+        const formData = new FormData();
+        console.log(this, this.files, this.files.length);
+
+        console.log(this.files[0].name);
+
+
+        // 이름 넣을 때 멀터 설정 이름으로 불어와야함
+        // for (i = 0; i < this.files.length; i++) {
+        //   document.getElementById('PO').innerHTML += `<img id="" src="/boardImg/${this.files[i].name}" style="" width="250" alt="미리보기">`;
+        // }
+
+
+
+        // 얘가 실제 파일 업로드
+        for (i = 0; i < this.files.length; i++) {
+          formData.append('boardImg', this.files[i]);
+        }
+
+        // console.log(formData);
+
+        // 이걸로 바꿀 수 있는지 봐야함
+        // let productimages = [];
+        // for (let i = 0; i < images.length; i++) {
+        //   productimages.push(images[i]);
+        // }
+        // formData.append('productPhotos', images);
+
+
+
+        axios.post('/board/post/boardImg', formData)
+          .then((res) => {
+            console.log(res.data);
+
+            // document.getElementById('img-url').value = res.data;
+            // document.getElementById('img-preview').src = res.data;
+            // document.getElementById('img-preview').style.display = 'inline';
+
+            // contenteditable에 쏴주는 처리를 여기다 하자(멀터에서 이름 설정(이름+현재시간으로 이름설정) 하는 처리를 가져가고 싶어서)
+            for (i = 0; i < res.data.length; i++) {
+              document.getElementById('PO').innerHTML +=
+                `<img id="" src="/boardImg/${res.data[i]}" style="" width="250" alt="미리보기">`;
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      })
+    }
+
+    function abcd() {
+      document.getElementById('여기여기').innerHTML = document.getElementById('PO').innerHTML;
+    }
+  </script>
+
+</body>
+
+</html>

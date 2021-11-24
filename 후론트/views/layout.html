@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>The A Team | 인류 마지막 희망</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+
+
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="../assets/css/vendor.min.css" rel="stylesheet" />
+	<link href="../assets/css/default/app.min.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+
+	<!-- ================== BEGIN page-css ================== -->
+	<link href="../assets/plugins/@fullcalendar/common/main.min.css" rel="stylesheet" />
+	<link href="../assets/plugins/@fullcalendar/daygrid/main.min.css" rel="stylesheet" />
+	<link href="../assets/plugins/@fullcalendar/timegrid/main.min.css" rel="stylesheet" />
+	<link href="../assets/plugins/@fullcalendar/list/main.min.css" rel="stylesheet" />
+	<link href="../assets/plugins/@fullcalendar/bootstrap/main.min.css" rel="stylesheet" />
+	<!-- ================== END page-css ================== -->
+
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="../assets/css/one-page-parallax/vendor.min.css" rel="stylesheet" />
+	<link href="../assets/css/one-page-parallax/app.min.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+
+	{% block head %}
+	{% endblock %}
+</head>
+
+<body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51'>
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-transparent navbar-fixed-top navbar-expand-lg">
+			<!-- begin container -->
+			<div class="container">
+				<!-- begin navbar-brand -->
+				<a href="/" class="navbar-brand">
+					<span class="brand-logo"></span>
+					<span class="brand-text">
+						<span class="text-primary">TheATeam</span> Development
+					</span>
+				</a>
+				<!-- end navbar-brand -->
+				<!-- begin navbar-toggle -->
+				<button type="button" class="navbar-toggle collapsed" data-bs-toggle="collapse"
+					data-bs-target="#header-navbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- end navbar-header -->
+				<!-- begin navbar-collapse -->
+				<div class="collapse navbar-collapse" id="header-navbar">
+					<ul class="nav navbar-nav navbar-end">
+						<li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">TEAM</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#service"
+								data-click="scroll-to-target">SERVICES</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link" href="#home" data-click="scroll-to-target"
+								data-scroll-target="#home">Profile <b class="caret"></b></a>
+							<div class="dropdown-menu dropdown-menu-left animated animate__fadeInDown">
+								<a class="dropdown-item" href="/profile">프로필 작성</a>
+								<!-- <a class="dropdown-item" href="/profile">프로필 작성</a> -->
+								<!-- <a class="dropdown-item" href="/profile">프로필 수정</a> -->
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link" href="#home" data-click="scroll-to-target"
+								data-scroll-target="#home">게시물 <b class="caret"></b></a>
+							<div class="dropdown-menu dropdown-menu-left animated animate__fadeInDown">
+								<a class="dropdown-item" href="/notice">공지사항</a>
+								<a class="dropdown-item" href="/board">게시물 보기</a>
+								<a class="dropdown-item" href="/board/go">게시물 작성</a>
+							</div>
+						</li>{% if user and user.id %}
+						<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">2021 개발자
+								포럼</a></li>
+						<li class="nav-item"><a class="nav-link" href="/chat" data-click="">문의하기</a></li>
+						<li class="nav-item"><a class="nav-link" href="/userinfo" data-click="">내 정보</a></li>
+						<li class="nav-item"><a class="nav-link" href="/auth/logout" data-click="">로그아웃</a></li>
+					</ul>
+				</div>
+				{% else %}
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">2021 개발자 포럼</a></li>
+				<li class="nav-item"><a class="nav-link" href="/chat" data-click="">문의하기</a></li>
+				<li class="nav-item"><a class="nav-link" href="/join" data-click="">회원가입</a></li>
+				<li class="nav-item"><a class="nav-link" href="/login" data-click="">로그인</a></li>
+				</ul>
+			</div>
+			{% endif %}
+			<!-- end navbar-collapse -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #header -->
+
+
+
+	<!-- begin #home -->
+	<div id="home" class="content has-bg home">
+		<!-- begin content-bg -->
+		<div class="content-bg" style="background-image: url(../assets/img/bg/bg-home.jpg);" data-paroller="true"
+			data-paroller-factor="0.5" data-paroller-factor-xs="0.25">
+		</div>
+		<!-- end content-bg -->
+		<!-- begin container -->
+		<div class="container">
+			{% block content%}
+			{% endblock %}
+
+		</div>
+
+		<div class="container home-content">
+			{% block content1 %}
+			{% endblock %}
+			<h1>Welcome to The A Team</h1>
+			<h3>K.A TEAM PROJECT 2Nd</h3>
+			<p>
+				We offer a space for developers.<br />
+				Use our site to obtain useful information.
+			</p>
+			<a href="#" class="btn btn-theme btn-primary">Explore More</a>
+			<br />
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #home -->
+
+
+
+
+	<!-- begin #about -->
+	<div id="about" class="content" data-scrollview="true">
+		<!-- begin container -->
+		<div class="container" data-animation="true" data-animation-type="animate__fadeInDown">
+			<h2 class="content-title">About US</h2>
+			<p class="content-desc">
+				개발자들을 위한 공간을 제시합니다. 구인, 커뮤니티 등 다양한 공간을 활용하세요.
+			</p>
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-4 -->
+				<div class="col-lg-4">
+					<!-- begin about -->
+					<div class="about">
+						<h3 class="mb-3">Our Story</h3>
+						<p>
+							개발자의 길을 걸으면서 마주쳤던 앞으로 마주칠 상황들에 대한 대처방안을 제시합니다.
+						</p>
+						<p>
+							개발자, 회사 간 구인<br>
+							이슈들에 대한 질문 및 의견 나눔<br>
+							나의 포트폴리오 작성 창 등을 구현하였습니다.
+						</p>
+					</div>
+					<!-- end about -->
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4">
+					<h3 class="mb-3">Our Philosophy</h3>
+					<!-- begin about-author -->
+					<div class="about-author">
+						<div class="quote">
+							<i class="fa fa-quote-left"></i>
+							<h3>We work harder,<br /><span>to let our user keep simple</span></h3>
+							<i class="fa fa-quote-right"></i>
+						</div>
+						<div class="author">
+							<div class="image">
+								<img src="../assets/img/user/user-1.jpg" alt="Sean Ngu" />
+							</div>
+							<div class="info">
+								The A Team
+								<small>Full Stack Developer</small>
+							</div>
+						</div>
+					</div>
+					<!-- end about-author -->
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4">
+					<h3 class="mb-3">Our Experience</h3>
+					<!-- begin skills -->
+					<div class="skills">
+						<div class="skills-name">Front End</div>
+						<div class="progress mb-3">
+							<div class="progress-bar progress-bar-striped progress-bar-animated bg-theme"
+								style="width: 95%">
+								<span class="progress-number">95%</span>
+							</div>
+						</div>
+						<div class="skills-name">Programming</div>
+						<div class="progress mb-3">
+							<div class="progress-bar progress-bar-striped progress-bar-animated bg-theme"
+								style="width: 90%">
+								<span class="progress-number">90%</span>
+							</div>
+						</div>
+						<div class="skills-name">Database Design</div>
+						<div class="progress mb-3">
+							<div class="progress-bar progress-bar-striped progress-bar-animated bg-theme"
+								style="width: 85%">
+								<span class="progress-number">85%</span>
+							</div>
+						</div>
+						<div class="skills-name">Wordpress</div>
+						<div class="progress mb-3">
+							<div class="progress-bar progress-bar-striped progress-bar-animated bg-theme"
+								style="width: 80%">
+								<span class="progress-number">80%</span>
+							</div>
+						</div>
+					</div>
+					<!-- end skills -->
+				</div>
+				<!-- end col-4 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #about -->
+
+	<!-- begin #milestone -->
+	<div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
+		<!-- begin content-bg -->
+		<div class="content-bg" style="background-image: url(../assets/img/bg/bg-milestone.jpg)" data-paroller="true"
+			data-paroller-factor="0.5" data-paroller-factor-md="0.01" data-paroller-factor-xs="0.01"></div>
+		<!-- end content-bg -->
+		<!-- begin container -->
+		<div class="container">
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-3 -->
+				<div class="col-lg-6 milestone-col">
+					<div class="milestone">
+						<div class="number" data-animation="true" data-animation-type="number" data-final-number="1292">
+							1,292</div>
+						<div class="title">전체 게시물 수</div>
+					</div>
+				</div>
+				<!-- end col-3 -->
+				<!-- begin col-3 -->
+				<div class="col-lg-6 milestone-col">
+					<div class="milestone">
+						<div class="number" data-animation="true" data-animation-type="number" data-final-number="9039">
+							9,039</div>
+						<div class="title">오늘 게시물 수</div>
+					</div>
+				</div>
+				<!-- end col-3 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #milestone -->
+
+	<!-- begin #team -->
+	<div id="team" class="content" data-scrollview="true">
+		<!-- begin container -->
+		<div class="container">
+			<h2 class="content-title">Our Team</h2>
+			<p class="content-desc">
+				Introduction our team.
+			</p>
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-4 -->
+				<div class="col-lg-4">
+					<!-- begin team -->
+					<div class="team">
+						<div class="image" data-animation="true" data-animation-type="animate__flipInX">
+							<img src="../assets/img/user/user-1.jpg" alt="Ryan Teller" />
+						</div>
+						<div class="info">
+							<h3 class="name">박정호</h3>
+							<div class="title text-primary">DEVELOPER</div>
+							<p>해외 가고 싶다</p>
+							<div class="social">
+								<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+								<a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+								<a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- end team -->
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4">
+					<!-- begin team -->
+					<div class="team">
+						<div class="image" data-animation="true" data-animation-type="animate__flipInX">
+							<img src="../assets/img/user/user-2.jpg" alt="Jonny Cash" />
+						</div>
+						<div class="info">
+							<h3 class="name">임철순</h3>
+							<div class="title text-primary">DEVELOPER</div>
+							<p>Donec quam felis, ultricies nec, pellentesque eu sem. Nulla consequat massa vierra
+								quis enim.</p>
+							<div class="social">
+								<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+								<a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+								<a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- end team -->
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4">
+					<!-- begin team -->
+					<div class="team">
+						<div class="image" data-animation="true" data-animation-type="animate__flipInX">
+							<img src="../assets/img/user/user-3.jpg" alt="Mia Donovan" />
+						</div>
+						<div class="info">
+							<h3 class="name">장아라</h3>
+							<div class="title text-primary">DEVELOPER</div>
+							<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean ligula
+								imperdiet. </p>
+							<div class="social">
+								<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+								<a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+								<a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- end team -->
+				</div>
+				<!-- end col-4 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #team -->
+
+	<!-- begin #quote -->
+	<div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
+		<!-- begin content-bg -->
+		<div class="content-bg" style="background-image: url(../assets/img/bg/bg-quote.jpg)" data-paroller-factor="0.5"
+			data-paroller-factor-md="0.01" data-paroller-factor-xs="0.01">
+		</div>
+		<!-- end content-bg -->
+		<!-- begin container -->
+		<div class="container" data-animation="true" data-animation-type="animate__fadeInLeft">
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-12 -->
+				<div class="col-lg-12 quote">
+					<i class="fa fa-quote-left"></i> Passion leads to design, design leads to performance, <br />
+					performance leads to <span class="text-primary">success</span>!
+					<i class="fa fa-quote-right"></i>
+					<small>Sean Themes, Developer Teams in Malaysia</small>
+				</div>
+				<!-- end col-12 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #quote -->
+
+	<!-- beign #service -->
+	<div id="service" class="content" data-scrollview="true">
+		<!-- begin container -->
+		<div class="container">
+			<h2 class="content-title">Our Services</h2>
+			<p class="content-desc">
+				구현 서비스 기술
+			</p>
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-4 -->
+				<div class="col-lg-4 col-md-6">
+					<div class="service">
+						<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i
+								class="fa fa-cog"></i></div>
+						<div class="info">
+							<h4 class="title">Easy to Customize</h4>
+							<p class="desc">개발자 맞춤 자기소개서 템플릿을 제공합니다</p>
+						</div>
+					</div>
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4 col-md-6">
+					<div class="service">
+						<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i
+								class="fa fa-paint-brush"></i></div>
+						<div class="info">
+							<h4 class="title">Clean & Careful Design</h4>
+							<p class="desc">개발자 회사 간 효율적인 구인 창을 제공합니다</p>
+						</div>
+					</div>
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4 col-md-6">
+					<div class="service">
+						<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i
+								class="fa fa-file"></i></div>
+						<div class="info">
+							<h4 class="title">Well Documented</h4>
+							<p class="desc">커뮤니티 창으로 이슈에 대한 질문과 답변, 개발자 간 의견 공유 창을 제공합니다.</p>
+						</div>
+					</div>
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4 col-md-6">
+					<div class="service">
+						<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i
+								class="fa fa-code"></i></div>
+						<div class="info">
+							<h4 class="title">Re-usable Code</h4>
+							<p class="desc">저희 서비스에 대한 문의를 위한 채팅 창을 제공합니다.</p>
+						</div>
+					</div>
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4 col-md-6">
+					<div class="service">
+						<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i
+								class="fa fa-shopping-cart"></i></div>
+						<div class="info">
+							<h4 class="title">Online Shop</h4>
+							<p class="desc">개인 활동에 대한 문서 출력을 제공합니다.</p>
+						</div>
+					</div>
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4 col-md-6">
+					<div class="service">
+						<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i
+								class="fa fa-heart"></i></div>
+						<div class="info">
+							<h4 class="title">Free Support</h4>
+							<p class="desc">개발자 포럼에 대한 정보를 제공합니다.</p>
+						</div>
+					</div>
+				</div>
+				<!-- end col-4 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #service -->
+
+	<!-- beign #action-box -->
+	<div id="action-box" class="content has-bg" data-scrollview="true">
+		<!-- begin content-bg -->
+		<div class="content-bg" style="background-image: url(../assets/img/bg/bg-action.jpg)" data-paroller-factor="0.5"
+			data-paroller-factor-md="0.01" data-paroller-factor-xs="0.01">
+		</div>
+		<!-- end content-bg -->
+		<!-- begin container -->
+		<div class="container" data-animation="true" data-animation-type="animate__fadeInRight">
+			<!-- begin row -->
+			<div class="row action-box">
+				<!-- begin col-9 -->
+				<div class="col-lg-9">
+					<div class="icon-large text-primary">
+						<i class="fa fa-binoculars"></i>
+					</div>
+					<h3>커뮤니티 창을 활용하세요</h3>
+					<p>
+						Tech & Other Issue 등에 대한 정보를 얻어가세요.
+					</p>
+				</div>
+				<!-- end col-9 -->
+				<!-- begin col-3 -->
+				<div class="col-lg-3">
+					<a href="#" class="btn btn-outline-white btn-theme btn-block">커뮤니티 바로가기</a>
+				</div>
+				<!-- end col-3 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #action-box -->
+
+	<!-- begin #work -->
+	<button type="button" class="btn btn-blue">자세히보기</button>
+	<div id="work" class="content" data-scrollview="true">
+		<!-- begin container -->
+		<div class="container" data-animation="true" data-animation-type="animate__fadeInDown">
+			<h2 class="content-title">2021 개발자 포럼</h2>
+			<!-- BEGIN page-header -->
+			<h1 class="page-header">행사일정 <small></small></h1>
+			<!-- END page-header -->
+			<hr />
+			<!-- BEGIN row -->
+			<div class="row">
+				<!-- BEGIN event-list -->
+				<div class="d-none d-lg-block" style="width: 215px">
+					<div id="external-events" class="fc-event-list">
+						<!-- <h5 class="mb-3">Draggable Events</h5>
+						<div class="fc-event" data-color="#00acac">
+							<div class="fc-event-text">Meeting with Client</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-success"></i></div>
+						</div>
+						<div class="fc-event" data-color="#348fe2">
+							<div class="fc-event-text">IOS App Development</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-blue"></i></div>
+						</div>
+						<div class="fc-event" data-color="#f59c1a">
+							<div class="fc-event-text">Group Discussion</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-warning"></i></div>
+						</div>
+						<div class="fc-event" data-color="#ff5b57">
+							<div class="fc-event-text">New System Briefing</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-danger"></i></div>
+						</div>
+						<div class="fc-event">
+							<div class="fc-event-text">Brainstorming</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-inverse"></i></div>
+						</div>
+						<hr class="bg-grey-lighter my-3" />
+						<h5 class="mb-3">Other Events</h5>
+						<div class="fc-event" data-color="#b6c2c9">
+							<div class="fc-event-text">Other Event 1</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i>
+							</div>
+						</div>
+						<div class="fc-event" data-color="#b6c2c9">
+							<div class="fc-event-text">Other Event 2</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i>
+							</div>
+						</div>
+						<div class="fc-event" data-color="#b6c2c9">
+							<div class="fc-event-text">Other Event 3</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i>
+							</div>
+						</div>
+						<div class="fc-event" data-color="#b6c2c9">
+							<div class="fc-event-text">Other Event 4</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i>
+							</div>
+						</div>
+						<div class="fc-event" data-color="#b6c2c9">
+							<div class="fc-event-text">Other Event 5</div>
+							<div class="fc-event-icon"><i class="fas fa-circle fa-fw fs-9px text-gray-500"></i>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<!-- END event-list -->
+				<div class="col-lg">
+					<!-- BEGIN calendar -->
+					<div id="calendar" class="calendar"></div>
+					<!-- END calendar -->
+				</div>
+			</div>
+			<!-- END row -->
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #work -->
+
+	<!-- begin #client -->
+	<div id="client" class="content has-bg bg-green" data-scrollview="true">
+		<!-- begin content-bg -->
+		<div class="content-bg" style="background-image: url(../assets/img/bg/bg-client.jpg)" data-paroller-factor="0.5"
+			data-paroller-factor-md="0.01" data-paroller-factor-xs="0.01">
+		</div>
+		<!-- end content-bg -->
+		<!-- begin container -->
+		<div class="container" data-animation="true" data-animation-type="animate__fadeInUp">
+			<h2 class="content-title">Our Client Testimonials</h2>
+			<!-- begin carousel -->
+			<div class="carousel testimonials slide" data-ride="carousel" id="testimonials">
+				<!-- begin carousel-inner -->
+				<div class="carousel-inner text-center">
+					<!-- begin item -->
+					<div class="carousel-item active">
+						<blockquote>
+							<i class="fa fa-quote-left"></i>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra, nulla ut
+							interdum fringilla,<br />
+							urna massa cursus lectus, eget rutrum lectus neque non ex.
+							<i class="fa fa-quote-right"></i>
+						</blockquote>
+						<div class="name"> — <span class="text-primary">Mark Doe</span>, Designer</div>
+					</div>
+					<!-- end item -->
+					<!-- begin item -->
+					<div class="carousel-item">
+						<blockquote>
+							<i class="fa fa-quote-left"></i>
+							Donec cursus ligula at ante vulputate laoreet. Nulla egestas sit amet lorem non
+							bibendum.<br />
+							Nulla eget risus velit. Pellentesque tincidunt velit vitae tincidunt finibus.
+							<i class="fa fa-quote-right"></i>
+						</blockquote>
+						<div class="name"> — <span class="text-primary">Joe Smith</span>, Developer</div>
+					</div>
+					<!-- end item -->
+					<!-- begin item -->
+					<div class="carousel-item">
+						<blockquote>
+							<i class="fa fa-quote-left"></i>
+							Sed tincidunt quis est sed ultrices. Sed feugiat auctor ipsum, sit amet accumsan elit
+							vestibulum<br />
+							fringilla. In sollicitudin ac ligula eget vestibulum.
+							<i class="fa fa-quote-right"></i>
+						</blockquote>
+						<div class="name"> — <span class="text-primary">Linda Adams</span>, Programmer</div>
+					</div>
+					<!-- end item -->
+				</div>
+				<!-- end carousel-inner -->
+				<!-- begin carousel-indicators -->
+				<ol class="carousel-indicators m-b-0">
+					<li data-bs-target="#testimonials" data-bs-slide-to="0" class="active"></li>
+					<li data-bs-target="#testimonials" data-bs-slide-to="1" class=""></li>
+					<li data-bs-target="#testimonials" data-bs-slide-to="2" class=""></li>
+				</ol>
+				<!-- end carousel-indicators -->
+			</div>
+			<!-- end carousel -->
+		</div>
+		<!-- end containter -->
+	</div>
+	<!-- end #client -->
+
+
+	<!-- begin #contact -->
+	<div id="contact" class="content bg-silver-lighter" data-scrollview="true">
+		<!-- begin container -->
+		<div class="container">
+			<h2 class="content-title">질문!</h2>
+			<p class="content-desc">
+			</p>
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-lg-6" data-animation="true" data-animation-type="animate__fadeInLeft">
+					<h3>궁금하거나 질문있으면 주저하지말고 보내주세요</h3>
+					<p>
+						필요한자료나 데이터 구현방법이 궁금하다면 바로 연락주세요 연락안하시는게 찌질한겁니다. 다같이 커나갑시다 코딩 별거없습니다 잠안자면 언젠가는되요.
+					</p>
+					<p>
+						<strong>여기는 주소주소</strong><br />
+						서울특별시 강동구 천호대로 995 <br>
+						금복빌딩 3,4층<br>
+						경일게임아카데미
+					</p>
+					<p>
+						<span class="phone">010-xxxx-xxxx</span><br />
+						<a href="mailto:cjftns01@gmaile.com" class="text-primary">cjftns01@gmaile.com</a>
+					</p>
+				</div>
+				<!-- end col-6 -->
+
+
+				<!-- begin col-6 -->
+				<div class="col-lg-6 form-col" data-animation="true" data-animation-type="animate__fadeInRight">
+					<form class="form-horizontal" action="/maile" method="post">
+						<div class="row mb-3">
+							<label class="col-form-label col-lg-3 text-lg-right">Title <span
+									class="text-primary">*</span></label>
+							<div class="col-lg-9">
+								<input type="text" class="form-control" name="title" placeholder=" 제목적어줘" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label class="col-form-label col-lg-3 text-lg-right">Email <span
+									class="text-primary">*</span></label>
+							<div class="col-lg-9">
+								<input type="text" class="form-control" value="cjftns031@naver.com" name="email" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label class="col-form-label col-lg-3 text-lg-right">Message <span
+									class="text-primary">*</span></label>
+							<div class="col-lg-9">
+								<textarea class="form-control" rows="10" name="text"
+									placeholder=" 텍스트 내용 적어줘어~~"></textarea>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label class="col-form-label col-lg-3 text-lg-right"></label>
+							<div class="col-lg-9 text-left">
+								<button type="submit" class="btn btn-theme btn-primary btn-block">Send Message</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<h2 class="content-title">개발자 되기위한 프로젝트 101 </h2>
+		</div>
+		<!-- end container -->
+	</div>
+	<!-- end #contact -->
+
+	<!-- begin #footer -->
+	<div id="footer" class="footer">
+		<div class="container">
+			<div class="footer-brand">
+				<div class="footer-brand-logo"></div>
+				The A Team
+			</div>
+			<p>
+				&copy; Copyright The A Team 2021 <br />
+				개발자들을 위한 공간 Created by <a href="#">SeanTheme</a>
+			</p>
+			<p class="social-list">
+				<a href="#"><i class="fab fa-facebook-f fa-fw"></i></a>
+				<a href="#"><i class="fab fa-instagram fa-fw"></i></a>
+				<a href="#"><i class="fab fa-twitter fa-fw"></i></a>
+				<a href="#"><i class="fab fa-google-plus-g fa-fw"></i></a>
+				<a href="#"><i class="fab fa-dribbble fa-fw"></i></a>
+			</p>
+		</div>
+	</div>
+	<!-- end #footer -->
+	<!-- begin theme-panel -->
+	<div class="theme-panel">
+		<a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+		<div class="theme-panel-content">
+			<ul class="theme-list clearfix">
+				<li><a href="javascript:;" class="bg-red" data-theme="red"
+						data-theme-file="../assets/css/one-page-parallax/theme/red.min.css" data-click="theme-selector"
+						data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Red"
+						data-original-title="" title="">&nbsp;</a></li>
+				<li><a href="javascript:;" class="bg-pink" data-theme="pink"
+						data-theme-file="../assets/css/one-page-parallax/theme/pink.min.css" data-click="theme-selector"
+						data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Pink"
+						data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li><a href="javascript:;" class="bg-orange" data-theme="orange"
+						data-theme-file="../assets/css/one-page-parallax/theme/orange.min.css"
+						data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+						data-bs-container="body" data-bs-title="Orange" data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li><a href="javascript:;" class="bg-yellow" data-theme="yellow"
+						data-theme-file="../assets/css/one-page-parallax/theme/yellow.min.css"
+						data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+						data-bs-container="body" data-bs-title="Yellow" data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li><a href="javascript:;" class="bg-lime" data-theme="lime"
+						data-theme-file="../assets/css/one-page-parallax/theme/lime.min.css" data-click="theme-selector"
+						data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime"
+						data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li><a href="javascript:;" class="bg-green" data-theme="green"
+						data-theme-file="../assets/css/one-page-parallax/theme/green.min.css"
+						data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+						data-bs-container="body" data-bs-title="Green" data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li class="active"><a href="javascript:;" class="bg-teal"
+						data-theme-file="../assets/css/one-page-parallax/theme/teal.min.css" data-theme="default"
+						data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+						data-bs-container="body" data-bs-title="Default" data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li><a href="javascript:;" class="bg-cyan" data-theme="aqua"
+						data-theme-file="../assets/css/one-page-parallax/theme/cyan.min.css" data-click="theme-selector"
+						data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cyan"
+						data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li><a href="javascript:;" class="bg-blue" data-theme="blue"
+						data-theme-file="../assets/css/one-page-parallax/theme/blue.min.css" data-click="theme-selector"
+						data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue"
+						data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li><a href="javascript:;" class="bg-purple" data-theme="purple"
+						data-theme-file="../assets/css/one-page-parallax/theme/purple.min.css"
+						data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+						data-bs-container="body" data-bs-title="Purple" data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li><a href="javascript:;" class="bg-indigo" data-theme="indigo"
+						data-theme-file="../assets/css/one-page-parallax/theme/indigo.min.css"
+						data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+						data-bs-container="body" data-bs-title="Indigo" data-original-title="" title="">&nbsp;</a>
+				</li>
+				<li><a href="javascript:;" class="bg-black" data-theme="black"
+						data-theme-file="../assets/css/one-page-parallax/theme/black.min.css"
+						data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+						data-bs-container="body" data-bs-title="Black" data-original-title="" title="">&nbsp;</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- end theme-panel -->
+	</div>
+	<!-- end #page-container -->
+
+
+	{% block script %}
+	{% endblock %}
+
+
+
+	<!-- ================== BEGIN core-js ================== -->
+	<script src="../assets/js/vendor.min.js"></script>
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/default.min.js"></script>
+	<!-- ================== END core-js ================== -->
+
+	<!-- ================== BEGIN page-js ================== -->
+	<script src="../assets/plugins/moment/min/moment.min.js"></script>
+	<script src="../assets/plugins/@fullcalendar/core/main.global.js"></script>
+	<script src="../assets/plugins/@fullcalendar/daygrid/main.global.js"></script>
+	<script src="../assets/plugins/@fullcalendar/timegrid/main.global.js"></script>
+	<script src="../assets/plugins/@fullcalendar/interaction/main.global.js"></script>
+	<script src="../assets/plugins/@fullcalendar/list/main.global.js"></script>
+	<script src="../assets/plugins/@fullcalendar/bootstrap/main.global.js"></script>
+	<script src="../assets/js/demo/calendar.demo.js"></script>
+
+
+
+	<script>
+		/*
+Template Name: Color Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 5
+Version: 5.0.0
+Author: Sean Ngu
+Website: http://www.seantheme.com/color-admin/
+*/
+
+		var handleCalendarDemo = function () {
+			// external events
+			var containerEl = document.getElementById('external-events');
+			var Draggable = FullCalendarInteraction.Draggable;
+			new Draggable(containerEl, {
+				itemSelector: '.fc-event',
+				eventData: function (eventEl) {
+					return {
+						title: eventEl.innerText,
+						color: eventEl.getAttribute('data-color')
+					};
+				}
+			});
+
+			// fullcalendar
+
+			var d = new Date();
+			var month = d.getMonth() + 1;
+			month = (month < 10) ? '0' + month : month;
+			var year = d.getFullYear();
+			var day = d.getDate();
+			var today = moment().startOf('day');
+			var calendarElm = document.getElementById('calendar');
+			var calendar = new FullCalendar.Calendar(calendarElm, {
+				headerToolbar: {
+					left: 'dayGridMonth,timeGridWeek,timeGridDay',
+					center: 'title',
+					right: 'prev,next today'
+				},
+				buttonText: {
+					today: 'Today',
+					month: 'Month',
+					week: 'Week',
+					day: 'Day'
+				},
+				initialView: 'dayGridMonth',
+				editable: true,
+				droppable: true,
+				themeSystem: 'bootstrap',
+				views: {
+					timeGrid: {
+						eventLimit: 6 // adjust to 6 only for timeGridWeek/timeGridDay
+					}
+				},
+				events: [{
+					title: '파이콘 한국 2021',
+					start: year + '-' + month + '-02',
+					end: year + '-' + month + '-04',
+					color: COLOR_TEAL
+				}, {
+					title: ' AWS Industry Week',
+					start: year + '-' + month + '-05',
+					end: year + '-' + month + '-14',
+					color: COLOR_BLUE
+				}, {
+					title: '데이터야놀자 2021',
+					start: year + '-' + month + '-16',
+					color: COLOR_PINK
+				}, {
+					title: ' 2021 AIoT 국제전시회 ',
+					start: year + '-' + month + '-20',
+					end: year + '-' + month + '-23',
+					color: COLOR_INDIGO
+				}, {
+					title: 'AWS Community Day 2021',
+					start: year + '-' + month + '-23',
+					color: COLOR_BLUE
+				}, {
+					title: '삼성 SDC',
+					start: year + '-' + month + '-26',
+					color: COLOR_GREEN
+				}, {
+					title: '반도체대전 SEDEX',
+					start: year + '-' + month + '-27',
+					end: year + '-' + month + '-30',
+					color: COLOR_ORANGE
+				}, {
+					title: 'LINE DEVELOPER DAY 2021',
+					start: year + '-' + month + '-41',
+					end: year + '-' + month + '-42',
+					color: COLOR_PINK
+				}, {
+					title: 'PASCON 2021',
+					start: year + '-' + month + '-42',
+					color: COLOR_ORANGE
+				}, {
+					title: '우아콘2021 (우아한테크콘서트)',
+					start: year + '-' + month + '-48',
+					end: year + '-' + month + '-50',
+					color: COLOR_BLUE
+				}, {
+					title: '한국 R 컨퍼런스 2021',
+					start: year + '-' + month + '-50',
+					color: COLOR_RED
+				}, {
+					title: 'SoftWave 2021',
+					start: year + '-' + month + '-62',
+					end: year + '-' + month + '-64',
+					color: COLOR_INDIGO
+				}, {
+					title: 'AI SUMMIT 2021 SEOUL',
+					start: year + '-' + month + '-68',
+					end: year + '-' + month + '-70',
+					color: COLOR_GREEN
+				}]
+			});
+
+			calendar.render();
+		};
+
+		var Calendar = function () {
+			"use strict";
+			return {
+				//main function
+				init: function () {
+					handleCalendarDemo();
+				}
+			};
+		}();
+
+		$(document).ready(function () {
+			Calendar.init();
+		});
+	</script>
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/one-page-parallax/vendor.min.js"></script>
+	<script src="../assets/js/one-page-parallax/app.min.js"></script>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+</html>

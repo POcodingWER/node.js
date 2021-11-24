@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>The A Team | 인류 마지막 희망</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+
+    <!-- ================== BEGIN core-css ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="../assets/css/vendor.min.css" rel="stylesheet" />
+    <link href="../assets/css/default/app.min.css" rel="stylesheet" />
+    <!-- ================== END core-css ================== -->
+
+    <!-- ================== BEGIN core-css ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="../assets/css/one-page-parallax/vendor.min.css" rel="stylesheet" />
+    <link href="../assets/css/one-page-parallax/app.min.css" rel="stylesheet" />
+    <!-- ================== END core-css ================== -->
+
+
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body class='page-navbar-fixed-top-sm'>
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade">
+        <!-- begin #header -->
+        <div id="header" class="header navbar navbar-default navbar-fixed-top navbar-expand-lg">
+            <!-- begin container -->
+            <div class="container">
+                <!-- begin navbar-brand -->
+                <a href="/" class="navbar-brand">
+                    <span class="brand-logo"></span>
+                    <span class="brand-text">
+                        <span class="text-primary">TheATeam</span> Development
+                    </span>
+                </a>
+                <!-- end navbar-brand -->
+                <!-- begin navbar-toggle -->
+                <button type="button" class="navbar-toggle collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#header-navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- end navbar-header -->
+                <!-- begin navbar-collapse -->
+                <div class="collapse navbar-collapse" id="header-navbar">
+                    <ul class="nav navbar-nav navbar-end">
+                        <li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">TEAM</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#service"
+                                data-click="scroll-to-target">SERVICES</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#home" data-click="scroll-to-target"
+                                data-scroll-target="#home">Profile <b class="caret"></b></a>
+                            <div class="dropdown-menu dropdown-menu-left animated animate__fadeInDown">
+                                <a class="dropdown-item" href="/profile">프로필 작성</a>
+                                <!-- <a class="dropdown-item" href="index_inverse_header.html">프로필 작성</a> -->
+                                <!-- <a class="dropdown-item" href="index_default_header.html">프로필 수정</a> -->
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#home" data-click="scroll-to-target"
+                                data-scroll-target="#home">게시물 <b class="caret"></b></a>
+                            <div class="dropdown-menu dropdown-menu-left animated animate__fadeInDown">
+                                <a class="dropdown-item" href="/notice">공지사항</a>
+                                <a class="dropdown-item" href="/board">게시물 보기</a>
+                                <a class="dropdown-item" href="/board/go">게시물 작성</a>
+                            </div>
+                        </li>{% if user and user.id %}
+                        <li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">2021 개발자
+                                포럼</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/chat" data-click="">문의하기</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/userinfo" data-click="">내 정보</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/auth/logout" data-click="">로그아웃</a></li>
+                    </ul>
+                </div>
+                {% else %}
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">2021 개발자 포럼</a></li>
+                <li class="nav-item"><a class="nav-link" href="/chat" data-click="">문의하기</a></li>
+                <li class="nav-item"><a class="nav-link" href="/join" data-click="">회원가입</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login" data-click="">로그인</a></li>
+                </ul>
+            </div>
+            {% endif %}
+            <!-- end navbar-collapse -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end #header -->
+
+    <br><br><br><br><br><br><br><br><br>
+    {% block content %}
+    {% endblock %}
+
+    <div class="container">
+        <!-- BEGIN #content -->
+        <!-- <div id="content" class="app-content"> -->
+            <!-- BEGIN breadcrumb -->
+            <ol class="breadcrumb float-xl-end">
+                <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript:;">Tables</a></li>
+                <li class="breadcrumb-item active">Basic Tables</li>
+            </ol>
+            <!-- END breadcrumb -->
+            <!-- BEGIN page-header -->
+            <h1 class="page-header">Basic Tables <small>header small text goes here...</small></h1>
+            <!-- END page-header -->
+            <!-- BEGIN row -->
+            <div class="row">
+                <!-- BEGIN col-6 -->
+                <div class="col-xl-12">
+                    <!-- BEGIN panel -->
+                    <div class="panel panel-inverse" data-sortable-id="table-basic-2">
+                        <!-- BEGIN panel-heading -->
+                        <div class="panel-heading">
+                            <h4 class="panel-title">게시판</h4>
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-default"
+                                    data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-success"
+                                    data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-warning"
+                                    data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-danger"
+                                    data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                        </div>
+                        <!-- END panel-heading -->
+                        <!-- BEGIN panel-body -->
+                        <div class="panel-body">
+                            <!-- BEGIN table-responsive -->
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0 text-inverse">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>작성자</th>
+                                            <th>제목</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for update in updates %}
+                                        <tr>
+                                            <td>{{update.id}}</td>
+                                            <td>{{user.userName}}</td>
+                                            <td><a name="{{update.id}}" href="/board/{{update.id}}">{{update.boardName}}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- END table-responsive -->
+                        </div>
+                        <!-- END panel-body -->
+                    </div>
+                    <!-- END panel -->
+                </div>
+                <!-- END col-6 -->
+            </div>
+            <!-- END row -->
+        </div>
+        <!-- END #content -->
+    </div>
+    <!-- begin theme-panel -->
+    <div class="theme-panel">
+        <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+        <div class="theme-panel-content">
+            <ul class="theme-list clearfix">
+                <li><a href="javascript:;" class="bg-red" data-theme="red"
+                        data-theme-file="../assets/css/one-page-parallax/theme/red.min.css" data-click="theme-selector"
+                        data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Red"
+                        data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-pink" data-theme="pink"
+                        data-theme-file="../assets/css/one-page-parallax/theme/pink.min.css" data-click="theme-selector"
+                        data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Pink"
+                        data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-orange" data-theme="orange"
+                        data-theme-file="../assets/css/one-page-parallax/theme/orange.min.css"
+                        data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                        data-bs-container="body" data-bs-title="Orange" data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-yellow" data-theme="yellow"
+                        data-theme-file="../assets/css/one-page-parallax/theme/yellow.min.css"
+                        data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                        data-bs-container="body" data-bs-title="Yellow" data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-lime" data-theme="lime"
+                        data-theme-file="../assets/css/one-page-parallax/theme/lime.min.css" data-click="theme-selector"
+                        data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime"
+                        data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-green" data-theme="green"
+                        data-theme-file="../assets/css/one-page-parallax/theme/green.min.css"
+                        data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                        data-bs-container="body" data-bs-title="Green" data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li class="active"><a href="javascript:;" class="bg-teal"
+                        data-theme-file="../assets/css/one-page-parallax/theme/teal.min.css" data-theme="default"
+                        data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                        data-bs-container="body" data-bs-title="Default" data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-cyan" data-theme="aqua"
+                        data-theme-file="../assets/css/one-page-parallax/theme/cyan.min.css" data-click="theme-selector"
+                        data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cyan"
+                        data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-blue" data-theme="blue"
+                        data-theme-file="../assets/css/one-page-parallax/theme/blue.min.css" data-click="theme-selector"
+                        data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue"
+                        data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-purple" data-theme="purple"
+                        data-theme-file="../assets/css/one-page-parallax/theme/purple.min.css"
+                        data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                        data-bs-container="body" data-bs-title="Purple" data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-indigo" data-theme="indigo"
+                        data-theme-file="../assets/css/one-page-parallax/theme/indigo.min.css"
+                        data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                        data-bs-container="body" data-bs-title="Indigo" data-original-title="" title="">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-black" data-theme="black"
+                        data-theme-file="../assets/css/one-page-parallax/theme/black.min.css"
+                        data-click="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                        data-bs-container="body" data-bs-title="Black" data-original-title="" title="">&nbsp;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end theme-panel -->
+    </div>
+    <!-- end #page-container -->
+
+
+
+    <!-- ================== BEGIN core-js ================== -->
+    <script src="../assets/js/vendor.min.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/js/theme/default.min.js"></script>
+    <!-- ================== END core-js ================== -->
+
+    <!-- ================== BEGIN page-js ================== -->
+    <script src="../assets/plugins/@highlightjs/cdn-assets/highlight.min.js"></script>
+    <script src="../assets/js/demo/render.highlight.js"></script>
+    <!-- ================== END page-js ================== -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="../assets/js/one-page-parallax/vendor.min.js"></script>
+    <script src="../assets/js/one-page-parallax/app.min.js"></script>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    {% block script %}
+    {% endblock %}
+</body>
+
+</html>

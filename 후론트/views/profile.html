@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>The A Team | 인류 마지막 희망</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN core-css ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="../assets/css/one-page-parallax/vendor.min.css" rel="stylesheet" />
+    <link href="../assets/css/one-page-parallax/app.min.css" rel="stylesheet" />
+    <!-- ================== END core-css ================== -->
+    <link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <script src="../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <!-- ================== BEGIN core-css ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="../assets/css/vendor.min.css" rel="stylesheet" />
+	<link href="../assets/css/default/app.min.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+
+    {% block head %}
+    {% endblock %}
+</head>
+<body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51'>
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-transparent navbar-fixed-top navbar-expand-lg">
+			<!-- begin container -->
+			<div class="container">
+				<!-- begin navbar-brand -->
+				<a href="/" class="navbar-brand">
+					<span class="brand-logo"></span>
+					<span class="brand-text">
+						<span class="text-primary">TheATeam</span> Development
+					</span>
+				</a>
+				<!-- end navbar-brand -->
+				<!-- begin navbar-toggle -->
+				<button type="button" class="navbar-toggle collapsed" data-bs-toggle="collapse"
+					data-bs-target="#header-navbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- end navbar-header -->
+
+
+
+				<!-- begin navbar-collapse -->
+				<div class="collapse navbar-collapse" id="header-navbar">
+					<ul class="nav navbar-nav navbar-end">
+						<li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">TEAM</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#service"
+								data-click="scroll-to-target">SERVICES</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact"
+								data-click="scroll-to-target">CONTACT</a></li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link" href="#home" data-click="scroll-to-target"
+								data-scroll-target="#home">Profile <b class="caret"></b></a>
+							<div class="dropdown-menu dropdown-menu-left animated animate__fadeInDown">
+								<a class="dropdown-item" href="/profile">프로필 작성 </a>
+								<a class="dropdown-item" href="#contact"data-click="scroll-to-target">프로필 수정</a>
+								<a class="dropdown-item" href="#contact"data-click="scroll-to-target">프로필 수정</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link" href="#home" data-click="scroll-to-target"
+								data-scroll-target="#home">게시물 <b class="caret"></b></a>
+							<div class="dropdown-menu dropdown-menu-left animated animate__fadeInDown">
+								<a class="dropdown-item" href="/board">게시물 보기</a>
+								<a class="dropdown-item" href="/board/go">게시물 작성</a>
+								<a class="dropdown-item" href="index_default_header.html">게시물 수정</a>
+							</div>
+
+						</li>{% if user and user.id %}
+						<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">2021 개발자
+								포럼</a></li>
+						<li class="nav-item"><a class="nav-link" href="/chat" data-click="">문의하기</a></li>
+						<li class="nav-item"><a class="nav-link" href="/userinfo" data-click="">내 정보</a></li>
+						<li class="nav-item"><a class="nav-link" href="/auth/logout" data-click="">로그아웃</a></li>
+					</ul>
+				</div>
+				{% else %}
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">2021 개발자 포럼</a></li>
+				<li class="nav-item"><a class="nav-link" href="/chat" data-click="">문의하기</a></li>
+				<li class="nav-item"><a class="nav-link" href="/join" data-click="">회원가입</a></li>
+				<li class="nav-item"><a class="nav-link" href="/login" data-click="">로그인</a></li>
+				</ul>
+			</div>
+			{% endif %}
+				<!-- end navbar-collapse -->
+			</div>
+			<!-- end container -->
+		</div>
+    <!-- end #header -->
+		
+        <!-- begin #home -->
+		<div id="home" class="content has-bg home">
+			<!-- begin content-bg -->
+			<div class="content-bg" style="background-image: url(../assets/img/bg/bg-quote.jpg);" 
+				data-paroller="true" 
+				data-paroller-factor="0.5"
+				data-paroller-factor-xs="0.25">
+			</div>
+			<!-- end content-bg -->
+			<!-- begin container -->
+			<div class="container mt-50px pt-50px">
+        <div class="content bg-silver-lighter" data-scrollview="true">
+          <!-- begin container -->
+          <div class="container">
+            <h2 class="content-title">개발자 프로필작성해서 공유해</h2>
+            <p class="content-desc">
+             나를뽀ㅃ아 뽑아줘요<br />
+              까르르까르르
+            </p>
+            <!-- begin row -->
+            <div class="row">
+              <form method="post" action="/profile" class="d-flex form-horizontal" >
+              <!-- begin col-6 -->
+              <div class="col-lg-6" data-animation="true" data-animation-type="animate__fadeInLeft">
+                <h1>{{user.nick}} &nbsp;&nbsp;회원님의 프로필</h1><br><br>
+                <p class="text-center">
+                 형식의맞게 작성해주세욘
+                </p>
+                <div class="row mb-3">
+                  <label class="col-form-label col-lg-3 text-lg-right">Email <span class="text-primary">*</span></label>
+                  <div class="col-lg-9">
+                    <input type="text" class="form-control" value="{{user.userMail}}" name="userMail"/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-form-label col-lg-3 text-lg-right">age <span class="text-primary">*</span></label>
+                  <div class="col-lg-9">
+                    <input type="number" class="form-control" placeholder="나이" name="age" />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-form-label col-lg-3 text-lg-right">name <span class="text-primary">*</span></label>
+                  <div class="col-lg-9">
+                    <input type="text" class="form-control" value="{{user.userName}}" name="userName" />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-form-label col-lg-3 text-lg-right">phone <span class="text-primary">*</span></label>
+                  <div class="col-lg-9">
+                    <input type="tel" class="form-control"  value="{{user.userTel}}" name="userTel" />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-form-label col-lg-3 text-lg-right">Message <span class="text-primary">*</span></label>
+                  <div class="col-lg-9">
+                    <textarea class="form-control" rows="7"  placeholder="한줄평"></textarea>
+                  </div>
+                </div>
+                <div class="">
+                <div class=" mb-3">
+                  <strong class="fs-15px ">기술스택</strong>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="c언어" name="skill" value="C언어">
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">c언어</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="python" name="skill" value='python'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">python</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="Javascript" name="skill" value='Javascript'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">Javascript</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" type="checkbox" id="mongodb" name="skill" value='mongodb'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">mongodb</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" type="checkbox" id="mysql" name="skill" value='mysql'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">mysql</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="php" name="skill" value='php'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">php</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="html" name="skill" value='html'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">html</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" type="checkbox" id="css" name="skill" value='css'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">css</label>
+                  </div>
+                  <input style="display: none;" sclass="profile-input skill" type="checkbox" id="null" name="skill" value=' ' checked
+                              style="width:15px;height:15px;" /></label></div>
+              </div>
+              <!-- end col-6 -->
+    
+              
+              <!-- begin col-6 -->
+              <div class="col-lg-6 form-col ms-5" data-animation="true" data-animation-type="animate__fadeInRight">
+                <div id="profile-article"class="">
+                 
+                  
+                  
+                  
+                  <div class=" mt-3 mb-3">
+                  <strong class="fs-15px ">직무</strong>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="back_end" name="work" value="backEnd">
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">서버/백엔드</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="front_end" name="work" value='frontEnd'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">프론트엔드</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="full_stack" name="work" value='fullStack'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">웹 풀스택</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="mobile_web" name="work" value='mobileWeb'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">모바일 앱</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="data_engineer" name="work" value='dataEngineer'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">데이터 엔지니어</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox"  id="game_server" name="work" value='gameServer'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">게임서버</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="game_client" name="work" value='gameClient'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">게임클라이언트</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" type="checkbox" id="AI" name="work" value='AI'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">인공지능</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" type="checkbox" id="wed_service" name="work" value='WedService'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">보안</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" type="checkbox" id="bit_coin" name="work" value='bitCoin'>
+                      <label class="form-check-label fs-15px" for="inlineCheckbox1">비트코인</label>
+                  </div>
+                  <input style="display: none;" sclass="profile-input skill" type="checkbox" id="bit_coin" name="work" value=' ' checked
+                              style="width:15px;height:15px;" /></label>
+
+              </div>
+
+                  <div class="row mb-3">
+                    <label class="col-form-label col-lg-3 text-lg-right">회사이름 <span class="text-primary">*</span></label>
+                    <div class="col-lg-9">
+                      <input type="text" class="form-control" name="companyName" placeholder="회사명을 입력해주세요" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-form-label col-lg-3 text-lg-right">직급 <span class="text-primary">*</span></label>
+                    <div class="col-lg-9">
+                      <input type="text" class="form-control" name="divisionName" placeholder="부서명/직책을 입력해주세요"  />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-form-label col-lg-3 text-lg-right">기간 <span class="text-primary">*</span></label>
+                    <div class="col-lg-9">
+                      <div class="input-group input-daterange">
+                        <input type="text" class="form-control" id="datepicker-start"  name="workstart"  placeholder="Date Start">
+                        <span class="input-group-text input-group-addon">to</span>
+                        <input type="text" class="form-control" id="datepicker-autoClose" name="workend"  placeholder="Date End">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-form-label col-lg-3 text-lg-right">주요업무 서술</label>
+                    <div class="col-lg-9">
+                      <textarea class="form-control" rows="10" name="experience" data-parsley-minlength="20" data-parsley-maxlength="100" placeholder="Range from 20 - 200"></textarea>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-form-label col-lg-3 text-lg-right"></label>
+                    <div class="col-lg-9 text-left">
+                    </div>
+                    <button type="submit" class="btn btn-theme btn-primary btn-block">프로필 등록</button>
+                  </div>
+                </div>
+              </form>
+              <!-- end col-6 -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- end container -->
+        </div>
+      </div>
+			<!-- end container -->
+		</div>
+		<!-- end #home -->
+    {% block content %}
+    {% endblock %}
+
+      
+
+
+
+
+        <!-- ================== BEGIN core-js ================== -->
+        <script src="../assets/js/vendor.min.js"></script>
+        <script src="../assets/js/app.min.js"></script>
+        <script src="../assets/js/theme/default.min.js"></script>
+        <!-- ================== END core-js ================== -->
+        
+	<!-- ================== BEGIN page-js ================== -->
+	<script src="../assets/plugins/@highlightjs/cdn-assets/highlight.min.js"></script>
+	<script src="../assets/js/demo/render.highlight.js"></script>
+	<!-- ================== END page-js ================== -->
+
+        <!-- ================== BEGIN BASE JS ================== -->
+        <script src="../assets/js/one-page-parallax/vendor.min.js"></script>
+        <script src="../assets/js/one-page-parallax/app.min.js"></script>
+    
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+          <!-- 달력 -->
+        <script>       $("#datepicker-autoClose").datepicker({            todayHighlight: true,            autoclose: true          });        </script>
+        <script>       $("#datepicker-start").datepicker({            todayHighlight: true,            autoclose: true          });        </script>
+    {% block script %}
+    {% endblock %}
+</body>
+
+</html>
